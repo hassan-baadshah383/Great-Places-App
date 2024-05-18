@@ -18,7 +18,7 @@ class DbHelper {
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
   }
 
-  static Future<List<Map<String, Object>>> getData(String table) async {
+  static Future<List<Map<String, Object?>>> getData(String table) async {
     final db = await DbHelper.database();
     return await db.query(table);
   }

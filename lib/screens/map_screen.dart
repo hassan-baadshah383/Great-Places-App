@@ -6,7 +6,7 @@ class MapScreen extends StatefulWidget {
   final LatLng initialLocation;
   final bool isSelecting;
   const MapScreen(
-      {Key key,
+      {Key? key,
       this.initialLocation = const LatLng(30.3753, 69.3451),
       this.isSelecting = false})
       : super(key: key);
@@ -16,7 +16,7 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  LatLng pickedLocation;
+  LatLng? pickedLocation;
 
   void _setLocation(LatLng position) {
     setState(() {

@@ -16,10 +16,10 @@ class AddPlace extends StatefulWidget {
 
 class _AddPlaceState extends State<AddPlace> {
   final _focusNode = FocusNode();
-  final _titleController = TextEditingController();
-  File _image;
-  double latitude;
-  double longitude;
+  final TextEditingController? _titleController = TextEditingController();
+  File? _image;
+  double? latitude;
+  double? longitude;
 
   void _imagePicker(File image) {
     _image = image;
@@ -45,7 +45,7 @@ class _AddPlaceState extends State<AddPlace> {
       return;
     }
     Provider.of<Places>(context, listen: false)
-        .addPlace(_titleController.text.trim(), _image, latitude, longitude);
+        .addPlace(_titleController.text.trim(), _image!, latitude!, longitude!);
     Navigator.of(context).pop();
   }
 
@@ -86,9 +86,6 @@ class _AddPlaceState extends State<AddPlace> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                 onPressed: savePlace,
                 icon: const Icon(Icons.add),
                 label: const Text('Add Place')),

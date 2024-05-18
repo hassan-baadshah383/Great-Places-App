@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart' as sys;
 class ImageInput extends StatefulWidget {
   Function sendImage;
 
-  ImageInput(this.sendImage, {Key key}) : super(key: key);
+  ImageInput(this.sendImage, {Key? key}) : super(key: key);
 
   @override
   State<ImageInput> createState() => _ImageInputState();
@@ -16,7 +16,7 @@ class ImageInput extends StatefulWidget {
 
 class _ImageInputState extends State<ImageInput> {
   // ignore: avoid_init_to_null
-  File _storedImage = null;
+  File? _storedImage = null;
 
   Future<void> _takePicture() async {
     final picker = ImagePicker();
@@ -45,7 +45,7 @@ class _ImageInputState extends State<ImageInput> {
               BoxDecoration(border: Border.all(width: 1.0, color: Colors.grey)),
           child: _storedImage != null
               ? Image.file(
-                  _storedImage,
+                  _storedImage!,
                   fit: BoxFit.cover,
                 )
               : const Center(

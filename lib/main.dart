@@ -20,8 +20,20 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Great Places',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
+              primarySwatch: Colors.blue,
+              appBarTheme: const AppBarTheme(
+                  backgroundColor: Colors.blue,
+                  iconTheme: IconThemeData(color: Colors.white),
+                  titleTextStyle: TextStyle(color: Colors.white)),
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                  style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                elevation: 0,
+              ))),
           routes: {
             AddPlace.routeName: (context) => AddPlace(),
           },

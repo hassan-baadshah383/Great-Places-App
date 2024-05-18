@@ -12,9 +12,9 @@ class Places with ChangeNotifier {
   }
 
   Place findByid(String id) {
-    if (_greatPlaces.isEmpty) {
-      return null;
-    }
+    // if (_greatPlaces.isEmpty) {
+    //   return null;
+    // }
     return _greatPlaces.firstWhere((place) => place.id == id);
   }
 
@@ -39,11 +39,12 @@ class Places with ChangeNotifier {
     final dbList = await DbHelper.getData('Places');
     _greatPlaces = dbList
         .map((item) => Place(
-            id: item['id'],
-            title: item['title'],
-            image: File(item['image']),
+            id: item['id'].toString(),
+            title: item['title'].toString(),
+            image: File(item['image'].toString()),
             location: Location(
-                latitude: item['latitude'], longitude: item['longitude'])))
+                latitude: double.parse(item['latitude'].toString()),
+                longitude: double.parse(item['longitude'].toString()))))
         .toList();
     notifyListeners();
   }

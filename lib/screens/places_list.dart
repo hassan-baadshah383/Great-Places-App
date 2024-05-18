@@ -29,20 +29,19 @@ class PlacesList extends StatelessWidget {
                     child: Text('No any place yet. Add some!'),
                   ),
                   builder: (context, places, ch) => places.allPlaces.isEmpty
-                      ? ch
+                      ? ch!
                       : Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ListView.builder(
                             itemBuilder: (context, index) {
                               return Card(
                                   elevation: 5,
+                                  color: Colors.grey[200],
                                   child: ListTile(
                                     leading: CircleAvatar(
                                         backgroundImage: FileImage(
                                             places.allPlaces[index].image)),
                                     title: Text(places.allPlaces[index].title),
-                                    subtitle: Text(
-                                        '${places.allPlaces[index].location.latitude}, ${places.allPlaces[index].location.longitude}'),
                                     onTap: () {
                                       Navigator.of(context)
                                           .push(MaterialPageRoute(

@@ -7,21 +7,21 @@ import 'package:native_features_app/screens/map_screen.dart';
 
 class LocationInput extends StatefulWidget {
   Function locPicker;
-  LocationInput(this.locPicker, {Key key}) : super(key: key);
+  LocationInput(this.locPicker, {Key? key}) : super(key: key);
 
   @override
   State<LocationInput> createState() => _LocationInputState();
 }
 
 class _LocationInputState extends State<LocationInput> {
-  double lat;
-  double lon;
+  double? lat;
+  double? lon;
 
   Future<void> _setCurrentLocation() async {
-    final loc = await Location().getLocation();
-    if (loc == null) {
-      return;
-    }
+    final LocationData loc = await Location().getLocation();
+    // if (loc == null) {
+    //   return;
+    // }
     setState(() {
       lat = loc.latitude;
       lon = loc.longitude;
@@ -33,7 +33,7 @@ class _LocationInputState extends State<LocationInput> {
     final selectedLocation =
         await Navigator.of(context).push<LatLng>(MaterialPageRoute(
       builder: (context) {
-        return const MapScreen(
+        return MapScreen(
           isSelecting: true,
         );
       },
@@ -66,11 +66,11 @@ class _LocationInputState extends State<LocationInput> {
                 ))
               : GoogleMap(
                   initialCameraPosition:
-                      CameraPosition(target: LatLng(lat, lon), zoom: 15.0),
+                      CameraPosition(target: LatLng(lat!, lon!), zoom: 15.0),
                   markers: {
                       Marker(
                           markerId: const MarkerId('staticLocation'),
-                          position: LatLng(lat, lon))
+                          position: LatLng(lat!, lon!))
                     }),
         ),
         const SizedBox(
